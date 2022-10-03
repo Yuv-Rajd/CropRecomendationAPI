@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <title>Crop Recommendation Program</title>
+</head>
+<style>
+    marquee{
+        background-color: rgba(16, 16, 16,0.4);
+        color: black;
+        border-radius: 10px;
+    }
+    html{height:100%}
+
+        *{  margin:0px;
+            padding:0px;
+            text-align: center;}
+        div{
+            width:500px;
+            border-radius: 10px;
+            padding:10px;
+            background-color: rgba(256, 256, 256, 0.162);
+            box-shadow:1px 1px 10px black;
+            }
+        body{
+            height:100%;
+            background-image:url("static/soil.jpg");
+            background-repeat: no-repeat;
+            background-size:cover;
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            flex-direction:column;
+        }
+
+        h4{
+            padding:4px
+            border:1px solid black;
+            background-color: rgba(16, 16, 16,0.4);
+            border-radius:3px;
+            color:white;
+        }
+</style>
+<!--____________________________________________________________________-->
+<script src="static/jQuery.js"></script>
+
+<script>
+        $(document).ready(function(){
+         $("#check").hide();
+         $('img').hide();
+
+<!--_______________________________________________________________________________________________________________-->
+         $("#fetch").click(function(){
+
+
+         $("#temp").val("");
+         $("#hum").val("");
+         $("#check").hide();
+         $('h4').empty();
+         $('img').hide();
+
+         var city=$("#city").val();
+         if( city=="")
+            {
+                alert("enter city name");
+                return;
+            }
+         //AJAX request begins
+
+         $.get(
+                "/getweather",
+                {cty:city},
+                function(data)
+                {
+                        res=$.parseJSON(data);
+                        if(res["flag"]=="1")
+                        {
+                        $("#temp").val(res["temp"]);
+                        $("#hum").val(res["hum"]);
+                        $("#check").show();
+                        }
+                        else
+                         {
+                         $('h4').text('City Not Found');
+
+                         }
+                }
+                );
+                });
+
+<!--___________________________________________________________________________________________________________-->
+        $("#check").click(function(){
+
+         $('h4').empty();
+         $('img').attr("src","");
+<!--         $('img').show();-->
+
+         //AJAX request begins
+        var temp=$("#temp").val();
+        var hum=$("#hum").val();
+        if( temp=="")
+            {
+                alert("enter Valid Temperature");
+                return;
+            }
+        if( hum=="")
+            {
+                alert("enter Valid Humidity");
+                return;
+            }
+
+         $.get(
+                "/result",
+                {temperature:temp,humidity:hum},
+                function(data)
+                {
+                        res=$.parseJSON(data);
+                        $('h4').text(res["msg"]);
+                        $('img').attr("src",res["img"]).fadeIn(2000);
+
+                }
+                );
+                });
+
+            });
+    </script>
+<!--________________________________________________________________________-->
+<body>
+
+<div>
+<!--___________________________________________________________________________________-->
+<marquee behavior="" direction="left">
+    <header>
+        <h2>
+            Crop Recommendation Program
+        </h2>
+    </header>
+</marquee>
+<!--________________________________________________________________________________-->
+<table class="table">
+        <tr>
+            <td>
+                 <input type="text" id="city" name="city" placeholder="enter city name">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                 <input type="button" class="btn btn-warning" id="fetch" value="Fetch">
+            </td>
+        </tr>
+</table>
+<!--_______________________________________________________________________-->
+<!-- method="post" action="/result"-->
+  <form >
+    <table class="table">
+      <tr>
+        <td>
+          <input type="text" id="temp" name="temperature" readonly placeholder="temparature" required value={{t}}>
+        </td>
+      </tr>
+        <tr>
+        <td>
+          <input type="number" id="hum" name="humidity"  readonly placeholder="humidity" required value={{h}}>
+        </td>
+      </tr>
+        <tr>
+        <td>
+          <input type="button" id="check" value="check" class="btn btn-success btn-block">
+        </td>
+      </tr>
+
+    </table>
+  </form>
+<!--_______________________________________________________________________________________________-->
+
+    <h4 >{{res}}</h4>
+    <img  src={{url_for('static',filename=img)}}>
+</div>
+
+</body>
+</html>
