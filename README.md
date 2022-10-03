@@ -5,15 +5,10 @@ machine learning is used to recommend the crops based on temperature and humidit
 
 <h3>packages needs to be downloaded</h3>
 pip install numpy
-
 pip install pandas
-
 pip install scipy
-
 pip install matplotlib
-
 pip install requests
-
 pip install Flask
 
 <h3> modification required </h3>
@@ -22,3 +17,7 @@ pip install Flask
 in WeatherDataProvider.py on line no :7 Enter your API key
 <br>
 <a href="https://youtu.be/Xs4Uo-vAAGw">yt video to generate api key </a>
+
+<h3>project images </h3>
+<h3>Home Page </h3><br>
+<img src="airdropmanager/image/am1.jpg" height=300><br>
