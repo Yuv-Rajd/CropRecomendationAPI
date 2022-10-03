@@ -19,5 +19,8 @@ in WeatherDataProvider.py on line no :7 Enter your API key
 <a href="https://youtu.be/Xs4Uo-vAAGw">yt video to generate api key </a>
 
 <h3>project images </h3>
-<h3>Home Page </h3><br>
-<img src="airdropmanager/image/am1.jpg" height=300><br>
+<h5>Login Page </h5><br>
+username :admin
+password :1234
+
+<img src="CropRecomendationAPI/static/login-index.jpg" height=300><br>
