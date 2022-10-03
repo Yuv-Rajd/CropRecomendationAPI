@@ -19,8 +19,14 @@ in WeatherDataProvider.py on line no :7 Enter your API key
 <a href="https://youtu.be/Xs4Uo-vAAGw">yt video to generate api key </a>
 
 <h3>project images </h3>
-<h5>Login Page </h5><br>
+<h5>Login Page </h5>
 username :admin
-password :1234
 
+password :1234
 <img src="https://github.com/Yuv-Rajd/CropRecomendationAPI/blob/main/static/login-index.jpg" height=300><br>
+
+<h5>Crop Recommendation Page </h5>
+<img src="https://github.com/Yuv-Rajd/CropRecomendationAPI/blob/main/static/crop.jpg" height=300><br>
+
+<h5>Result </h5>
+<img src="https://github.com/Yuv-Rajd/CropRecomendationAPI/blob/main/static/result.jpg" height=300><br>
