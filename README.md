@@ -23,4 +23,4 @@ in WeatherDataProvider.py on line no :7 Enter your API key
 username :admin
 password :1234
 
-<img src="CropRecomendationAPI/static/login-index.jpg" height=300><br>
+<img src="https://github.com/Yuv-Rajd/CropRecomendationAPI/blob/main/static/login-index.jpg" height=300><br>
