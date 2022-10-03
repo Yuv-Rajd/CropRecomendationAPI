@@ -4,7 +4,7 @@ import requests , json
 
 def fetch_weather_data(city):
 	# Enter your API key here
-	api_key = "8670862edc66b0ea26e08336452fb846"
+	api_key = "##################"
 
 	# base_url variable to store url
 
